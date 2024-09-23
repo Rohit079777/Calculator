@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            box-sizing:border-box;
+        }
+      
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /*overflow: hidden;*/
+        }
+        .calc{
+            border: 5px solid black;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 40px;
+        }
+        .col{
+            width: 340px;
+        }
+        input{
+            width: 100px;
+            border: 2px solid rgba(119, 117, 4,0);
+            padding: 24px;
+            margin: 10px;
+            background: transparent;
+            box-shadow: 0px 3px 15px rgba(100, 255, 170, 0.9);
+            font-size: 50px;
+            text-align: center;
+            cursor: pointer;
+        }
+        input::placeholder{
+            color:#ffffff;
+            text-align: right;
+        }
+       .bg{
+           background-image: url("img14.jpeg");
+           background-repeat: no-repeat;
+           background-size: cover;
+        }
+        h1 {
+            font-size: 50px;
+            text-align: center;
+            background-image:linear-gradient(to right,rgb(240, 44, 44),rgb(6, 31, 107));
+		    background-clip: text;
+		    color:transparent;
+        }
+        table{
+            margin: auto;
+        }
+    </style>
+</head>
+<body class="bg">
+    <script>
+        function pick(val)
+        {
+            document.getElementById("a").value +=val;
+        }
+
+        function clr()
+        {
+            document.getElementById("a").value =" ";
+        }
+
+        function solve()
+        {
+          var x=document.getElementById("a").value;
+          var y=eval(x);
+          document.getElementById("a").value=y;
+        }
+
+        // Add keyboard input functionality,use of chatgpt
+    document.addEventListener('keydown', function(event) {
+    const key = event.key;
+    if (!isNaN(key) || ['+', '-', '*', '/', '.'].includes(key)) {
+        pick(key);
+    } else if (key === 'Enter' || key === '=') {
+        solve();
+    } else if (key === 'Backspace') {
+        clr();
+    }
+    });
+
+    </script>
+    <div class="calc">
+        <h1>Simple Calculator</h1>
+            <input class="col" type="text" id="a" placeholder="0">
+            <input type="button" value="AC" onclick="clr()" >
+    
+    <table>
+       
+        <tr>
+            <th><input type="button" value="1" onclick="pick(1)"></th>
+            <th><input type="button" value="2" onclick="pick(2)"></th>
+            <th><input type="button" value="3" onclick="pick(3)"></th>
+            <th><input type="button" value="/" onclick="pick('/')"></th>
+
+        </tr>
+        <tr>
+            <th><input type="button" value="4" onclick="pick(4)"></th>
+            <th><input type="button" value="5" onclick="pick(5)"></th>
+            <th><input type="button" value="6" onclick="pick(6)"></th>
+            <th><input type="button" value="*" onclick="pick('*')"></th>
+
+        </tr>
+        <tr>
+            <th><input type="button" value="7" onclick="pick(7)"></th>
+            <th><input type="button" value="8" onclick="pick(8)"></th>
+            <th><input type="button" value="9" onclick="pick(9)"></th>
+            <th><input type="button" value="-" onclick="pick('-')"></th>
+
+        </tr>
+        <tr>
+            <th><input type="button" value="." onclick="pick('.')"></th>
+            <th><input type="button" value="0" onclick="pick(0)"></th>
+            <th><input type="button" value="=" onclick=solve()></th>
+            <th><input type="button" value="+" onclick="pick('+')"></th>
+        </tr>
+    
+    </table>
+</div>
+</body>
+</html>
